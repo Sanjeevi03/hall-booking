@@ -1,0 +1,27 @@
+Booking room
+
+customerName
+Date
+Start time
+end time
+room ID
+
+
+//https://github.com/szkapec/hotel-application.git
+
+
+//delete code
+
+app.delete('/del/:id',async (req,res)=>{
+   var data= await mongo.db.collection('rooms').remove({_id: ObjectId(req.params.id)})
+   if(!data) return res.status(400).send({msg: "Room Not found"})
+   res.send(data)
+})
+
+// FINDING AVAILABILITY
+ var find_room = await mongo.db.collection('rooms').findOne({"roomno":a});
+   if(find_room["active-status"] == true)
+   return res.send({Msg:"Room available"})
+   else
+   return res.send({msg:"This is Room is already Booked"})
+   
